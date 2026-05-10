@@ -1,102 +1,173 @@
-Employee Management System
-Welcome to the Employee Management System! This is a simple Spring Boot project designed for beginners to help you get started with Spring Boot, JPA (Java Persistence API), and basic Spring Security. The application demonstrates how to connect a Spring Boot application to a MySQL database and secure the API endpoints.
+# 🚀 App Build — Session Tracker
 
-Features
-Employee Listing: Fetch and display a list of employees from a MySQL database.
-Database Integration: Uses JPA to interact with a MySQL database.
-Basic Security: Implements basic Spring Security to secure API endpoints.
-Prerequisites
-To run this project, you'll need:
+> Paste this at the start of every new chat session to keep Claude in sync.
+> Update the "Current Status" and "Last Session" sections after every session.
 
-Java Development Kit (JDK) 8 or later.
-Maven (for dependency management and building the project).
-MySQL Database installed locally.
-Getting Started
-Follow these steps to set up and run the application:
+---
 
-1. Clone the Repository
-[git clone  https://github.com/praveenzha/CoreJavaWithSpringBoot]
+## 📌 Project Overview
 
-cd employee-management-system
+- **App Type:** B2C Transactional App
+- **User Roles:** 3 or more (e.g., Customer / Provider / Admin)
+- **Core Action:** Buy / Book / Pay
+- **Backend:** Java + Spring Boot (Microservices)
+- **Web Frontend:** React + TypeScript
+- **Mobile:** React Native (Android)
+- **Database:** PostgreSQL + Redis
+- **Messaging:** Kafka (inter-service events)
+- **Auth:** JWT + Spring Security
+- **API Gateway:** Spring Cloud Gateway
+- **DevOps:** Docker (later stage)
 
-3. Configure the Database
-Ensure MySQL is installed and running on your local system. Create a new database named employee_db (or any name you prefer).
+---
 
-Update the application.properties file with your MySQL database credentials:
-spring.datasource.url=jdbc:mysql://localhost:3306/employee_db
-spring.datasource.username=your_db_username
-spring.datasource.password=your_db_password
+## 🗺️ Microservices Roadmap
 
-# Hibernate Dialect
-spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL5Dialect
+| # | Service | Status | Started | Completed |
+|---|---------|--------|---------|-----------|
+| 1 | User & Auth Service | 🔲 Not Started | — | — |
+| 2 | Profile Service | 🔲 Not Started | — | — |
+| 3 | Catalog / Listing Service | 🔲 Not Started | — | — |
+| 4 | Order / Booking Service | 🔲 Not Started | — | — |
+| 5 | Payment Service | 🔲 Not Started | — | — |
+| 6 | Notification Service | 🔲 Not Started | — | — |
+| 7 | API Gateway | 🔲 Not Started | — | — |
+| 8 | Admin Service | 🔲 Not Started | — | — |
 
-# Show SQL
-spring.jpa.show-sql=true
+**Status Legend:** 🔲 Not Started | 🔄 In Progress | ✅ Done | ⏸️ Paused
 
-3. Build and Run the Application
-Ensure you have Maven installed. Navigate to the project directory and run the following command to build and start the application:
+---
 
-mvn spring-boot:run
+## ⚡ Current Status
 
-4. Access the Application
-Once the application is running, you can access the employee list API endpoint at:
+> Update this section at the end of every session.
 
- http://localhost:8080/employees/list
+- **Active Service:** User & Auth Service
+- **Current Phase:** [ ] Design | [ ] Coding | [ ] Testing | [ ] Integrated
+- **Today's Date:** _______________
+- **Sessions Completed:** 0
+- **Total Hours Logged:** 0 hrs
 
- 5. Security Configuration
-By default, the application uses basic HTTP authentication to secure the API endpoints. The credentials are defined in the SecurityConfig class. You can customize these credentials or the security configuration as needed.
+---
 
-Project Structure
-src/main/java/com/example/employee: Contains the main application code.
+## 📅 Last Session Summary
 
-Employee.java: JPA entity representing an employee.
-EmployeeRepository.java: JPA repository for CRUD operations on employees.
-EmployeeService.java: Service class for business logic related to employees.
-EmployeeController.java: REST controller handling API requests for employees.
-src/main/resources/application.properties: Configuration file for database and security settings.
+> Fill this in at the end of each session so you can paste it next time.
 
-pom.xml: Maven configuration file for managing dependencies.
+**Date:** _______________
+**Duration:** _______________
+**What we did:**
+-
+-
+-
 
-Troubleshooting
-Database Connection Issues: Ensure MySQL is running and the database credentials in application.properties are correct.
-Dependency Errors: Make sure all dependencies are correctly defined in pom.xml and run mvn clean install to resolve them.
+**Decisions made:**
+-
+-
 
+**Blockers / Issues:**
+-
 
-. Security Configuration
-Basic Spring Security is implemented to secure the API endpoints. Here is the detailed configuration:
+**Next task (pick up from here):**
+>
 
-Security Configuration
-The SecurityConfig class configures in-memory authentication with three users, each having different roles. This class is located in the com.example.springboot.cruddemo.config package.
+---
 
+## 🧱 Architecture Decisions Log
 
-Explanation:
+> Record every significant design/tech decision here for future reference.
 
-@Configuration: Indicates that this class contains Spring configuration.
-@Bean: Declares the InMemoryUserDetailsManager bean, which is used to provide in-memory user details.
-User.builder(): Creates UserDetails objects for each user with specified username, password, and roles.
-{noop}: Indicates that the password is stored in plain text. In production, consider using a password encoder like BCryptPasswordEncoder.
-The application uses HTTP Basic Authentication. Users must provide one of the defined usernames and passwords to access the secured API endpoints.
+| Date | Decision | Reason |
+|------|----------|--------|
+| — | Using JWT for auth | Stateless, scalable for microservices |
+| — | PostgreSQL as primary DB | Relational data, strong consistency |
+| — | Kafka for async events | Decoupled inter-service communication |
+| | | |
 
-Project Structure
-src/main/java/com/example/employee: Contains the main application code.
+---
 
-Employee.java: JPA entity representing an employee.
-EmployeeRepository.java: JPA repository for CRUD operations on employees.
-EmployeeService.java: Service class for business logic related to employees.
-EmployeeController.java: REST controller handling API requests for employees.
-SecurityConfig.java: Configuration class for basic Spring Security.
-src/main/resources/application.properties: Configuration file for database and security settings.
+## 📁 Project Structure
 
-pom.xml: Maven configuration file for managing dependencies.
+```
+/project-root
+├── /auth-service          # Service 1 — User & Auth
+├── /profile-service       # Service 2 — Profiles
+├── /catalog-service       # Service 3 — Catalog/Listings
+├── /order-service         # Service 4 — Orders/Bookings
+├── /payment-service       # Service 5 — Payments
+├── /notification-service  # Service 6 — Notifications
+├── /api-gateway           # Service 7 — API Gateway
+├── /admin-service         # Service 8 — Admin
+├── /web-frontend          # React + TypeScript
+└── /mobile-app            # React Native (Android)
+```
 
-![image](https://github.com/user-attachments/assets/ec001537-80bd-464b-a9a7-8733e6cb557a)
+---
 
-![image](https://github.com/user-attachments/assets/9245812c-66c6-4da1-8c38-e3275541e61a)
+## 🔐 Service 1: User & Auth Service
 
-![image](https://github.com/user-attachments/assets/f1001eb3-b6ac-4cf8-bd52-e6dd4b24a698)
+**Goal:** Handle registration, login, JWT tokens, and role management.
 
-![image](https://github.com/user-attachments/assets/c6841146-c107-4da5-9c30-6bf6b72a9679)
+### Checklist
+- [ ] Project setup (Spring Boot, dependencies)
+- [ ] Database schema — Users table with roles
+- [ ] User Registration API (`POST /auth/register`)
+- [ ] User Login API (`POST /auth/login`)
+- [ ] JWT token generation & validation
+- [ ] Role-based access control (RBAC)
+- [ ] Refresh token logic
+- [ ] Unit tests
+- [ ] Postman / API testing
+- [ ] Docker containerization
 
+### API Endpoints
+| Method | Endpoint | Description | Status |
+|--------|----------|-------------|--------|
+| POST | `/auth/register` | Register new user | 🔲 |
+| POST | `/auth/login` | Login, returns JWT | 🔲 |
+| POST | `/auth/refresh` | Refresh JWT token | 🔲 |
+| POST | `/auth/logout` | Invalidate token | 🔲 |
+| GET | `/auth/me` | Get current user | 🔲 |
 
+### Notes
+>
 
- 
+---
+
+## 🗒️ Concepts Learned Log
+
+> Track every new concept you learn — great for revision!
+
+| Session # | Concept | Service | Notes |
+|-----------|---------|---------|-------|
+| — | — | — | — |
+
+---
+
+## 🔗 Useful Links
+
+- GitHub Repo: _______________
+- Postman Collection: _______________
+- DB Schema Diagram: _______________
+- API Docs: _______________
+
+---
+
+## 💬 How to Start a New Chat Session
+
+Paste the following at the top of every new chat:
+
+```
+Hi! I'm building a B2C transactional app with microservices (Java/Spring Boot backend,
+React web, React Native Android). Here's my current status:
+
+- Active service: [X]
+- Last session: [paste Last Session Summary here]
+- Next task: [paste next task here]
+
+Let's continue from where we left off.
+```
+
+---
+
+*Last updated: _______________*
